@@ -18,10 +18,10 @@ By the end of this session, you will be able to:
 | --- | --- | --- |
 | Setup & Functions Recap | — | ~5 min |
 | **Part 1 — Lists** | `Part1_Lists_and_Loops/1_lists.py` | ~10 min |
-| **Part 1 — `for` Loops** | `Part1_Lists_and_Loops/2_for_range.py`, `3_for_list.py`, `4_for_largest.py` | ~30 min |
+| **Part 1 — `for` Loops** | `Part1_Lists_and_Loops/2_for_range.py`, `3_for_list.py`, `4_for_break.py` | ~30 min |
 | **Part 1 — `while` Loops** | `Part1_Lists_and_Loops/5_while_pin.py`, `6_while_sum.py` | ~25 min |
-| **Part 2 — Extra (Optional in Class)** | `Part2_Data_Structures_and_Scope/7_tuples.py` – `10_scope.py` | ~15 min |
-| **Part 3 — Homework Walkthrough** | `Part3_Homework/11_homework.py` | ~5 min |
+| **Part 2 — Extra (Optional in Class)** | `Part2_Data_Structures_and_Scope/7_tuples.py` – `11_for_largest.py` | ~15 min |
+| **Part 3 — Homework Walkthrough** | `Part3_Homework/12_homework.py` | ~5 min |
 
 ---
 
@@ -110,6 +110,7 @@ A **`for` loop** repeats a block of code a fixed number of times or once for eac
 - `for i in range(n):` runs `n` times (`0` through `n - 1`).
 - `for i in range(start, stop):` starts at `start` and stops *before* `stop`.
 - `for item in my_list:` visits each element in `my_list` one by one.
+- `break` exits a loop early as soon as a condition is met.
 
 ---
 
@@ -172,30 +173,28 @@ Total: 4
 
 ---
 
-### 🟦 Exercise 4 — `for` Loop: Largest of N Numbers (`Part1_Lists_and_Loops/4_for_largest.py`)
+### 🟦 Exercise 4 — `for` Loop with `break`: Stop on a Fruit (`Part1_Lists_and_Loops/4_for_break.py`)
 
 **Task:**  
-Ask the user **how many numbers** they will enter.  
-Then, using a **`for` loop**, read that many integers from the user and print out the **largest** number entered.
+Complete the following steps:
 
-**Sample interaction:**
+1. Create a list called `fruits` with: `"apple"`, `"banana"`, `"cherry"`, `"orange"`.
+2. Write a **`for` loop** that prints each item in `fruits`.
+3. Use **`break`** to stop the loop when the item is `"cherry"` (after printing it).
+
+**Sample output:**
 
 ```text
-How many numbers? 4
-Number 1: 10
-Number 2: 5
-Number 3: 27
-Number 4: 12
-The largest number was: 27
+apple
+banana
+cherry
 ```
 
 **Hints:**
 
-1. Ask for `count = int(input("How many numbers? "))` before the loop.
-2. Loop with `for i in range(count):` and prompt using `i + 1` (e.g. `f"Number {i + 1}: "`).
-3. Keep a `largest` variable (start with `None`, or set it on the first iteration when `i == 0`).
-4. Whenever the newly entered number is greater than `largest`, update `largest`.
-5. Print the largest number after the loop ends.
+1. Define `fruits = ["apple", "banana", "cherry", "orange"]` at the top of your code.
+2. Loop with `for fruit in fruits:` and print `fruit` inside the loop.
+3. Check `if fruit == "cherry":` and run `break` right after printing so `"orange"` is not printed.
 
 **Link:** https://www.w3schools.com/python/python_for_loops.asp
 
@@ -215,9 +214,9 @@ A **`while` loop** repeats as long as a condition remains `True`:
 **Task:**  
 Keep asking the user for a PIN code until they type `4321`.  
 For every incorrect attempt, print `"Wrong"`.  
-When they finally enter `4321`, print how many attempts it took (with a special message if they got it right on the first try).
+When they finally enter `4321`, print how many attempts it took.
 
-**Sample interaction 1:**
+**Sample interaction:**
 
 ```text
 PIN: 3245
@@ -230,18 +229,11 @@ PIN: 4321
 Correct! It took you 4 attempts
 ```
 
-**Sample interaction 2 (first try correct):**
-
-```text
-PIN: 4321
-Correct! It only took you one single attempt!
-```
-
 **Hints:**
 
 1. Start an `attempts` counter and read the PIN in a `while` loop until it equals `"4321"` (or `4321`).
 2. Print `"Wrong"` on each incorrect try and increment `attempts`.
-3. After the loop finishes, use `if attempts == 1:` for the single-attempt message and `else:` for multiple attempts.
+3. After the loop finishes, print the total number of attempts.
 
 **Link:** https://www.w3schools.com/python/python_while_loops.asp
 
@@ -384,9 +376,38 @@ Create a global variable `counter = 0`. Write a function `increase_counter()` th
 
 ---
 
+### ⭐ Exercise 11 — `for` Loop Challenge: Largest of N Numbers (`Part2_Data_Structures_and_Scope/11_for_largest.py`)
+
+**Task:**  
+Ask the user **how many numbers** they will enter.  
+Then, using a **`for` loop**, read that many integers from the user and print out the **largest** number entered.
+
+**Sample interaction:**
+
+```text
+How many numbers? 4
+Number 1: 10
+Number 2: 5
+Number 3: 27
+Number 4: 12
+The largest number was: 27
+```
+
+**Hints:**
+
+1. Ask for `count = int(input("How many numbers? "))` before the loop.
+2. Loop with `for i in range(count):` and prompt using `i + 1` (e.g. `f"Number {i + 1}: "`).
+3. Keep a `largest` variable (start with `None`, or set it on the first iteration when `i == 0`).
+4. Whenever the newly entered number is greater than `largest`, update `largest`.
+5. Print the largest number after the loop ends.
+
+**Link:** https://www.w3schools.com/python/python_for_loops.asp
+
+---
+
 ## 🏠 Part 3 — Homework: Student Grade Tracker Refactor
 
-> File: `Part3_Homework/11_homework.py`
+> File: `Part3_Homework/12_homework.py`
 
 Last week, you built a single-student Grade Calculator (`calculate_grade(score)` and `display_report(score, grade)`).  
 This week, you will refactor your homework to process **multiple students** using **`while` loops**, **lists**, and **`for` loops** (assume the user enters integer numbers for scores).
